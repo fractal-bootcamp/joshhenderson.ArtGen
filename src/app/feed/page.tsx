@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useState } from 'react'
 import { NextResponse } from 'next/server';
 
@@ -53,7 +54,7 @@ function ArtFeed({ title, user, background, description, createdAt }: ArtFeedPro
 }
 
 async function fetchArtPosts() {
-    const res = await fetch('http://localhost:3000/api/artPosts')
+    const res = await fetch('http://localhost:3000/api/art')
     const data = await res.json()
     return data
 }
