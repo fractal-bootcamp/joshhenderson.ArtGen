@@ -15,8 +15,11 @@ export default function MakeArt() {
 
     function submissionHandler() {
         console.log("Submitting your art...")
-        fetch('/api/createArt', {
+        fetch('/api/artPosts', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ title, description, background }),
         })
     }
@@ -31,7 +34,7 @@ export default function MakeArt() {
                 <input className='text-black' type="text" placeholder="Title" onChange={(e) => setTitle(e.target.value)}></input>
                 <input className='text-black' type="text" placeholder="Description" onChange={(e) => setDescription(e.target.value)}></input>
                 <input className='border-black border-2 h-4 w-6' type="color" onChange={(e) => setBackground(e.target.value)}></input>
-                <button onClick={submissionHandler}>Submit your art!</button>
+                <button onClick={() => { (submissionHandler()) }}>Submit your art!</button>
             </div>
         </>
     );
