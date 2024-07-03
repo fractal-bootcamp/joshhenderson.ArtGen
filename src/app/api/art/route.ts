@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/app/Prisma-Client';
+import prisma from '../../../../Prisma-Client';
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyUser } from '@/middleware/verifyUser';
 
 
 // This will be for adding favorites to make my databse a bit more intersting 
@@ -8,8 +9,10 @@ import { NextRequest, NextResponse } from 'next/server';
 //     return Response.json({ message: 'Hello, POST WORLD!' });
 // }
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export const GET = verifyUser(async (req: NextRequest, res: NextResponse) => {
     // get all the art from the database
     const art = await prisma.art.findMany();
     return Response.json(art);
-}
+})
+
+export const dynamic = 'force-dynamic'
