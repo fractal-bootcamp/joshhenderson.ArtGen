@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/app/Prisma-Client';
+import prisma from '../../../../Prisma-Client';
 import { z } from 'zod';
 import { NextRequest, NextResponse } from 'next/server';
 
