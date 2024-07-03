@@ -54,7 +54,7 @@ function ArtFeed({ title, user, background, description, createdAt }: ArtFeedPro
 }
 
 async function fetchArtPosts() {
-    const res = await fetch('http://localhost:3000/api/art/all')
+    const res = await fetch('api/art/all')
     const data = await res.json()
     return data
 }

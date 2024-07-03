@@ -1,4 +1,5 @@
 import Image from "next/image";
+import verifyUser from "@/middleware/verifyUser";
 
 export default function Home() {
   return (
