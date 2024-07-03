@@ -43,7 +43,7 @@ type FeedProps = {
 function ArtFeed({ title, user, background, description, createdAt }: ArtFeedProps) {
     return (
         <>
-            <div>
+            <div className='text-white border rounded p-4'>
                 <h1>{title}</h1>
                 <p>{description} by {user}</p>
                 <p>{createdAt.toString()}</p>
@@ -54,15 +54,17 @@ function ArtFeed({ title, user, background, description, createdAt }: ArtFeedPro
 }
 
 async function fetchArtPosts() {
-    const res = await fetch('http://localhost:3000/api/art')
+    const res = await fetch('http://localhost:3000/api/art/all')
     const data = await res.json()
     return data
 }
 
 
 
+
 export default function Feed() {
     const [artList, setArtList] = useState<ArtFeedProps[]>([])
+    console.log('art is ', artList)
     //let seedList = [...seed]
     //useEffect to fetch the artList
     useEffect(() => {
