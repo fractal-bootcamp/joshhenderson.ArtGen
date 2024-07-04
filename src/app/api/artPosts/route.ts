@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../../Prisma-Client';
 import { z } from 'zod';
 import { NextRequest, NextResponse } from 'next/server';
+import verifyUser from '@/middleware/verifyUser';
 
 const artSchema = z.object({
     title: z.string(),
@@ -9,9 +10,8 @@ const artSchema = z.object({
     description: z.string()
 });
 
-
-//POST route for handling artPosts
-export async function POST(req: NextRequest, res: NextResponse) {
+// POST async function for handling post requests
+const postHandler = async (req: NextRequest, res: NextResponse) => {
     const body = await req.json();
     console.log("body", body);
     const parsedBody = artSchema.safeParse(body);
@@ -23,3 +23,5 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const artPost = await prisma.art.create({ data: { title, background, description } });
     return Response.json({ artPost });
 }
+//POST route for handling artPosts
+export const POST = verifyUser(postHandler)
