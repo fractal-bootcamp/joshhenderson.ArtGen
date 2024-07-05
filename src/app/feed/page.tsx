@@ -33,6 +33,9 @@ type ArtFeedProps = {
     user: string,
     background: string,
     description: string,
+    intensity: number,
+    backgroundColor: string,
+    color: string,
     createdAt: Date
 };
 
@@ -79,7 +82,7 @@ export default function Feed() {
             return (
                 <>
                     <div className='flex flex-col items-center '>
-                        <ArtRender key={art.id} title={art.title} description={art.description} background={art.background} />
+                        <ArtRender key={art.id} title={art.title} description={art.description} background={art.background} intensity={art.intensity} backgroundColor={art.backgroundColor} color={art.color} />
                         <div>{art.createdAt.toString()}</div>
                     </div>
                 </>

@@ -20,14 +20,20 @@ model User {
   email     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  artPosts  Art[]
 }
 
 model Art {
-  id          String @id @default(uuid())
-  title       String
-  background  String
-  description String
+  id              String @id @default(uuid())
+  title           String @default("Default Title")
+  background      String @default("Default Background")
+  description     String @default("Default Description")
+  intensity       Float  @default(0.5) // Default value for intensity
+  backgroundColor String @default("white") // Default value for backgroundColor
+  color           String @default("black") // Default value for color
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
 }
