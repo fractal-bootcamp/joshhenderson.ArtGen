@@ -29,19 +29,22 @@ export default function MakeArt() {
         router.push('/feed')
     }
 
-
-
     return (
         <>
-            <div>MakeArt</div>
+            <div className="container mx-auto p-4 flex flex-col items-center">
+                <div className="text-3xl font-bold mb-4">MakeArt</div>
 
-            <ArtRender title={title} description={description} background={background} />
+                <ArtRender title={title} description={description} background={background} />
 
-            <div className="flex flex-col items-center justify-center h-screen">
-                {console.log('background', background)}
-                <Controls title={title} description={description} background={background} setTitle={setTitle} setDescription={setDescription} setBackground={setBackground} />
+                <div className="flex flex-col items-center justify-center space-y-4 w-full">
+                    <Controls title={title} description={description} background={background} setTitle={setTitle} setDescription={setDescription} setBackground={setBackground} />
+                </div>
+                <button
+                    onClick={submissionHandler}
+                    className="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    Submit your art!
+                </button>
             </div>
-            <button onClick={submissionHandler}>Submit your art!</button>
         </>
     );
 }

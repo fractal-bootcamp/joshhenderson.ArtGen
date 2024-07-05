@@ -28,9 +28,10 @@ export default function RootLayout({
                         <SignedIn>
                             <UserButton />
                         </SignedIn>
-                        <nav>
-                            <Link href="/feed">Feed</Link>
-                            <Link href="/makeArt">Make Art</Link>
+                        <nav style={{ display: 'flex', alignItems: 'center', border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+                            <Link href="/feed" style={{ marginRight: '15px', border: '1px solid #000', padding: '5px', borderRadius: '3px' }} className="link-hover">Feed</Link>
+                            <Link href="/makeArt" style={{ border: '1px solid #000', padding: '5px', borderRadius: '3px' }} className="link-hover">Make Art</Link>
+                            <Link href="/test-page" style={{ border: '1px solid #000', padding: '5px', borderRadius: '3px' }} className="link-hover">Test Page</Link>
                         </nav>
                     </header>
                     <main>{children}</main>
