@@ -46,7 +46,7 @@ function Controls2(props: Controls2Props) {
                 <span className="font-semibold">Title</span>
                 <input
                     type="text"
-                    className="mt-1 p-1 border rounded"
+                    className="mt-1 p-1 border rounded text-black"
                     onChange={(e) => props.setTitle(e.target.value)}
                 />
             </label>
@@ -54,7 +54,7 @@ function Controls2(props: Controls2Props) {
                 <span className="font-semibold">Description</span>
                 <input
                     type="text"
-                    className="mt-1 p-1 border rounded"
+                    className="mt-1 p-1 border rounded text-black"
                     onChange={(e) => props.setDescription(e.target.value)}
                 />
             </label>
