@@ -3,6 +3,7 @@ import { Physics, SphereProps, useBox, usePlane, useSphere } from "@react-three/
 import { Mesh, Sphere } from "three"
 import { RefObject, forwardRef } from 'react'
 
+
 const Ball = forwardRef<Mesh, SphereProps>((props, fwdRef) => {
   const [ref, { position }] = useSphere(() => ({ args: [0.5], type: 'Kinematic', ...props }), fwdRef)
 
@@ -17,6 +18,7 @@ const Ball = forwardRef<Mesh, SphereProps>((props, fwdRef) => {
   )
 })
 
+Ball.displayName = "Ball"
 
 
 export default function ArtDisplay() {

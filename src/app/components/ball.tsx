@@ -42,3 +42,5 @@ export const Ball = forwardRef<Mesh, BallProps>((props, fwdRef) => {
         </mesh>
     )
 })
+
+Ball.displayName = "Ball"
