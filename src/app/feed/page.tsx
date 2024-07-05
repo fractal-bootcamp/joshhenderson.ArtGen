@@ -1,29 +1,31 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { NextResponse } from 'next/server';
+import ArtRender from '../components/ArtRender';
 
 
-const seed = [{
-    title: "Art 1",
-    user: "User 1",
-    background: "FF0099",
-    description: "Description 1",
-    createdAt: new Date()
-},
-{
-    title: "Art 2",
-    user: "User 2",
-    background: "00CCFF",
-    description: "Description 2",
-    createdAt: new Date()
-},
-{
-    title: "Art 3",
-    user: "User 3",
-    background: "CC0000",
-    description: "Description 3",
-    createdAt: new Date()
-}]
+
+// const seed = [{
+//     title: "Art 1",
+//     user: "User 1",
+//     background: "FF0099",
+//     description: "Description 1",
+//     createdAt: new Date()
+// },
+// {
+//     title: "Art 2",
+//     user: "User 2",
+//     background: "00CCFF",
+//     description: "Description 2",
+//     createdAt: new Date()
+// },
+// {
+//     title: "Art 3",
+//     user: "User 3",
+//     background: "CC0000",
+//     description: "Description 3",
+//     createdAt: new Date()
+// }]
 
 type ArtFeedProps = {
     id: string,
@@ -31,6 +33,9 @@ type ArtFeedProps = {
     user: string,
     background: string,
     description: string,
+    intensity: number,
+    backgroundColor: string,
+    color: string,
     createdAt: Date
 };
 
@@ -40,18 +45,18 @@ type FeedProps = {
 
 
 
-function ArtFeed({ title, user, background, description, createdAt }: ArtFeedProps) {
-    return (
-        <>
-            <div className='text-white border rounded p-4'>
-                <h1>{title}</h1>
-                <p>{description} by {user}</p>
-                <p>{createdAt.toString()}</p>
-            </div>
-            <div className={`h-[200px] w-[200px] bg-[${background}] text-[text]`}>Your Art Here</div>
-        </>
-    )
-}
+// function ArtFeed({ title, user, background, description, createdAt }: ArtFeedProps) {
+//     return (
+//         <>
+//             <div className='text-white border rounded p-4'>
+//                 <h1>{title}</h1>
+//                 <p>{description} by {user}</p>
+//                 <p>{createdAt.toString()}</p>
+//             </div>
+//             <div className={`h-[200px] w-[200px] bg-[${background}] text-[text]`}>Your Art Here</div>
+//         </>
+//     )
+// }
 
 async function fetchArtPosts() {
     const res = await fetch('/api/art/all')
@@ -71,9 +76,17 @@ export default function Feed() {
         fetchArtPosts().then((data) => setArtList(data))
     }, [])
 
+
     return (
         artList.map((art: ArtFeedProps) => {
-            return <ArtFeed key={art.id} {...art} />
+            return (
+                <>
+                    <div className='flex flex-col items-center '>
+                        <ArtRender key={art.id} title={art.title} description={art.description} background={art.background} intensity={art.intensity} backgroundColor={art.backgroundColor} color={art.color} />
+                        <div>{art.createdAt.toString()}</div>
+                    </div>
+                </>
+            )
         })
     )
 }
