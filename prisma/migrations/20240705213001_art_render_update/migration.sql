@@ -1,0 +1,8 @@
+-- AlterTable
+ALTER TABLE "Art" ADD COLUMN     "backgroundColor" TEXT NOT NULL DEFAULT 'white',
+ADD COLUMN     "color" TEXT NOT NULL DEFAULT 'black',
+ADD COLUMN     "intensity" DOUBLE PRECISION NOT NULL DEFAULT 0.5,
+ADD COLUMN     "userId" TEXT;
+
+-- AddForeignKey
+ALTER TABLE "Art" ADD CONSTRAINT "Art_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
